@@ -10,11 +10,10 @@ enum UserRoles: string
     use EnumToArray;
 
     case ADMIN = 'admin';
-    case MODERATOR = 'moderator';
     case USER = 'user';
 
     public static function getAdmins(): array{
-        return [self::MODERATOR->value, self::ADMIN->value];
+        return [self::ADMIN->value];
     }
 
 

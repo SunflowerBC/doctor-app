@@ -25,6 +25,10 @@ class UserResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')->required(),
                 Forms\Components\TextInput::make('email')->email()->required()->disabled(),
+                Forms\Components\TextInput::make('phone')
+                    ->label('Phone number')
+                    ->tel()
+                    ->required(),
                 Forms\Components\Select::make('role')->required()->relationship(),
             ]);
     }
@@ -33,9 +37,17 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('role'),
+                Tables\Columns\TextColumn::make('name')
+                ->sortable()
+                ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('phone')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('role')
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //

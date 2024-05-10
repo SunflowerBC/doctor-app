@@ -23,9 +23,8 @@ class PatientResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')->required(),
-                Forms\Components\TextInput::make('surname')->required(),
-                Forms\Components\TextInput::make('patronymic')->required(),
+                Forms\Components\TextInput::make('name')->required()->maxLength(255),
+
 
 
                 Forms\Components\DatePicker::make('date_of_birth')
@@ -34,8 +33,7 @@ class PatientResource extends Resource
                 ->displayFormat('d/m/Y'),
 
                 Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'id')
-                    ->required(),
+                    ->required()->relationship("user", titleAttribute: 'name'),
             ]);
     }
 
@@ -43,9 +41,19 @@ class PatientResource extends Resource
     {
         return $table
             ->columns([
-                Forms\Components\TextInput::make('name')
-                ->required()
-                    ->maxLength(255)
+                Tables\Columns\TextColumn::make('name')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('date_of_birth')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('user_id')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->sortable()
+                    ->searchable(),
+
 
             ])
             ->filters([

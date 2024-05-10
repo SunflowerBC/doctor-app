@@ -17,10 +17,8 @@ class DoctorResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'surname' => $this->surname,
-            'patronymic' => $this->patronymic,
-            'category_id' => $this->category_id,
-            'hospital_id' => $this->hospital_id,
+            'categoryId' => $this->category_id,
+            'hospitalId' => $this->hospital_id,
             'pivot' => $this->pivot,
         ];
     }

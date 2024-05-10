@@ -15,31 +15,30 @@ class HospitalSeeder extends Seeder
      */
     public function run(): void
     {
-       $hospitals = [
-           'SitiMed',
-           'Талап',
-           'ИНТЕРТИЧ',
-           'Uniserv Medical Center',
-           'Mediker',
-           'DiVera ',
-           'Dent-Lux',
-           'Жайык Дент'
-       ];
-
-       foreach ($hospitals as $hospital){
-
-           DB::table('hospitals')->insert([
-               'title' => $hospital,
-               'value' => $hospital
-           ]);
-       }
-
-       $hospital = Hospital::all();
-
-       $doctors = Doctor::all();
-
-       foreach ($doctors as $d){
-           $d->hospital()->sync($hospital);
-       }
+//       $hospitals = [
+//           'SitiMed',
+//           'Талап',
+//           'ИНТЕРТИЧ',
+//           'Uniserv Medical Center',
+//           'Mediker',
+//           'DiVera ',
+//           'Dent-Lux',
+//           'Жайык Дент'
+//       ];
+//
+//       foreach ($hospitals as $hospital){
+//
+//           DB::table('hospitals')->insert([
+//               'title' => $hospital,
+//           ]);
+//       }
+//
+//       $hospital = Hospital::all();
+//
+//       $doctors = Doctor::all();
+//
+//       foreach ($doctors as $d){
+//           $d->hospital()->sync($hospital);
+//       }
     }
 }

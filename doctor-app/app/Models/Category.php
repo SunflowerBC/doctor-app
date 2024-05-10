@@ -15,6 +15,6 @@ class Category extends Model
 
     public function doctor()
     {
-        return $this->belongsToMany(Doctor::class);
+        return $this->hasMany(Doctor::class);
     }
 }

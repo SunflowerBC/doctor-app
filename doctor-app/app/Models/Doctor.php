@@ -13,8 +13,9 @@ class Doctor extends Model
 
     protected  $fillable =[
         "name",
-        "surname",
-        "patronymic"
+        "image",
+        "category_id",
+        "hospital_id",
     ];
 
     public function category()
@@ -25,5 +26,10 @@ class Doctor extends Model
     public function hospital()
     {
         return $this->belongsToMany(Hospital::class);
+    }
+
+    public function appointment()
+    {
+        return $this->hasMany(Appointment::class);
     }
 }

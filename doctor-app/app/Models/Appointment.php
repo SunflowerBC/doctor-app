@@ -4,23 +4,29 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Appointment extends Model
 {
     use HasFactory;
     public $fillable =[
         'state',
-        'appointmentDate'
+        'appointment_date',
+        'hospital_id',
+        'patient_id',
+        'doctor_id',
+
     ];
 
     public function doctor()
     {
-        return $this->belongsToMany(Doctor::class, 'doctor_appointment')
-            ->withPivot('id', 'patient_id', 'hospital_id', 'user_id', 'appointment_id');
+        return $this->belongsTo(Doctor::class, );
     }
 
-    public function user()
+
+
+    public function patient(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Patient::class);
     }
 }

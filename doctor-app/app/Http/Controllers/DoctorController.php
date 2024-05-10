@@ -7,15 +7,26 @@ use App\Http\Resources\DoctorResource;
 use App\Models\Doctor;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
+use App\Services\DoctorQuery;
+use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new DoctorCollection(Doctor::paginate(7));
+        $filter = new DoctorQuery();
+        $queryItems = $filter->transform($request);
+
+        if (count($queryItems) == 0){
+            return new DoctorCollection(Doctor::paginate());
+        } else{
+            return new DoctorCollection(Doctor::where($queryItems)->paginate());
+        }
+
+
     }
 
     /**

@@ -27,8 +27,7 @@ return new class extends Migration
                 ->onDelete('cascade');
 
             $table->string('name');
-            $table->string('surname');
-            $table->string('patronymic');
+            $table->string('image')->nullable();
             $table->timestamps();
 
 

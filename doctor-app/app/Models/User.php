@@ -19,7 +19,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password'
+        'password',
+        'phone',
     ];
 
     /**
@@ -46,11 +47,7 @@ class User extends Authenticatable
     }
     public function patient()
     {
-        return $this->belongsToMany(Patient::class);
+        return $this->hasMany(Patient::class);
     }
 
-    public function appointment()
-    {
-        return $this->belongsTo(Appointment::class);
-    }
 }

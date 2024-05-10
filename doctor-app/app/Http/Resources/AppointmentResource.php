@@ -17,11 +17,12 @@ class AppointmentResource extends JsonResource
         $this->resource->with(['category']);
         return [
             'id' => $this->id,
-            'state' => $this->date,
-            'appointmentDate' => $this->appointmentDate,
+            'state' => $this->state,
+            'appointmentDate' => $this->appointment_date,
             'user' => new UserResource($this->user),
             'doctor' => new DoctorCollection($this->doctor),
             'patient' => new PatientCollection($this->patient),
+            'hospital' => new HospitalCollection($this->hospital)
         ];
     }
 }

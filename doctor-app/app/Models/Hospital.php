@@ -9,8 +9,12 @@ class Hospital extends Model
 {
     use HasFactory;
 
+    protected  $fillable =[
+        "title", "image"
+    ];
+
     public function doctor()
     {
-        return $this->belongsToMany(Doctor::class);
+        return $this->hasMany(Doctor::class);
     }
 }

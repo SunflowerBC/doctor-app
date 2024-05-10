@@ -14,12 +14,6 @@ class PatientSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::all();
-
-        $patient = Patient::all();
-
-        foreach ($users as $user){
-            $user->patient()->sync($patient);
-        }
+        //
     }
 }
